@@ -1,0 +1,6 @@
+
+*.tlog
+*.obj
+Debug/
+.vs/
+win32_graphics/win32_graphics.aps

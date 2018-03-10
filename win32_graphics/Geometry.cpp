@@ -110,7 +110,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 	l.push_front(n3);
 	l.push_front(n2);
 	l.push_front(n1);
-	if (a1.at(2)) // if up
+	if (a1[2]) // if up
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -119,7 +119,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(2))
+			if ((cur->code ^ iter->code)[2])
 			{
 				float y = cur->pos.y - cur->pos.w;
 				float w = y / (y - (iter->pos.y - iter->pos.w));
@@ -142,12 +142,12 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 		//delete node where is up of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(2)) iter = l.erase(iter);
+			if ((iter->code)[2]) iter = l.erase(iter);
 			else ++iter;
 		}
 	}
 
-	if (a1.at(3)) // if down
+	if (a1[3]) // if down
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -156,7 +156,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(3))
+			if ((cur->code ^ iter->code)[3])
 			{
 				float y = cur->pos.y + cur->pos.w;
 				float w = y / (y - (iter->pos.y + iter->pos.w));
@@ -179,13 +179,13 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 		//delete node where is down of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(3)) iter = l.erase(iter);
+			if ((iter->code)[3]) iter = l.erase(iter);
 			else ++iter;
 		}
 
 	}
 
-	if (a1.at(0)) // if left
+	if (a1[0]) // if left
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -194,7 +194,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(0))
+			if ((cur->code ^ iter->code)[0])
 			{
 				float x = cur->pos.x + cur->pos.w;
 				float w = x / (x - (iter->pos.x + iter->pos.w));
@@ -217,13 +217,13 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 		//delete node where is left of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(0)) iter = l.erase(iter);
+			if ((iter->code)[0]) iter = l.erase(iter);
 			else ++iter;
 		}
 
 	}
 
-	if (a1.at(1)) // if right
+	if (a1[1]) // if right
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -232,7 +232,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(1))
+			if ((cur->code ^ iter->code)[1])
 			{
 				float x = cur->pos.x - cur->pos.w;
 				float w = x / (x - (iter->pos.x - iter->pos.w));
@@ -254,12 +254,12 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 		//delete node where is right of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(1)) iter = l.erase(iter);
+			if ((iter->code)[1]) iter = l.erase(iter);
 			else ++iter;
 		}
 	}
 
-	if (a1.at(5)) // if back
+	if (a1[5]) // if back
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -268,7 +268,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(5))
+			if ((cur->code ^ iter->code)[5])
 			{
 				float z = cur->pos.z - cur->pos.w;
 				float w = z / (z - (iter->pos.z - iter->pos.w));
@@ -291,13 +291,13 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 		//delete node where is back of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(5)) iter = l.erase(iter);
+			if ((iter->code)[5]) iter = l.erase(iter);
 			else ++iter;
 		}
 
 	}
 
-	if (a1.at(4)) // if front
+	if (a1[4]) // if front
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -306,7 +306,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(4))
+			if ((cur->code ^ iter->code)[4])
 			{
 				float z = cur->pos.z + cur->pos.w;
 				float w = z / (z - (iter->pos.z + iter->pos.w));
@@ -329,7 +329,7 @@ int clippingTriangle(const Vertex* v1, const Vertex* v2, const Vertex* v3, Verte
 		//delete node where is front of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(4)) iter = l.erase(iter);
+			if ((iter->code)[4]) iter = l.erase(iter);
 			else ++iter;
 		}
 	}
@@ -381,7 +381,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 	l.push_front(n3);
 	l.push_front(n2);
 	l.push_front(n1);
-	if (a1.at(2)) // if up
+	if (a1[2]) // if up
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -390,7 +390,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(2))
+			if ((cur->code ^ iter->code)[2])
 			{
 				float w = (1 - cur->pos.y) / (iter->pos.y - cur->pos.y);
 				Node n;
@@ -411,12 +411,12 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 		//delete node where is up of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(2)) iter = l.erase(iter);
+			if ((iter->code)[2]) iter = l.erase(iter);
 			else ++iter;
 		}
 	}
 
-	if (a1.at(3)) // if down
+	if (a1[3]) // if down
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -425,7 +425,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(3))
+			if ((cur->code ^ iter->code)[3])
 			{
 				float w = (-1 - cur->pos.y) / (iter->pos.y - cur->pos.y);
 				Node n;
@@ -446,13 +446,13 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 		//delete node where is down of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(3)) iter = l.erase(iter);
+			if ((iter->code)[3]) iter = l.erase(iter);
 			else ++iter;
 		}
 
 	}
 
-	if (a1.at(4)) // if front
+	if (a1[4]) // if front
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -461,7 +461,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(4))
+			if ((cur->code ^ iter->code)[4])
 			{
 				float w = (-1 - cur->pos.z) / (iter->pos.z - cur->pos.z);
 				Node n;
@@ -482,13 +482,13 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 		//delete node where is front of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(4)) iter = l.erase(iter);
+			if ((iter->code)[4]) iter = l.erase(iter);
 			else ++iter;
 		}
 
 	}
 
-	if (a1.at(5)) // if back
+	if (a1[5]) // if back
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -497,7 +497,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(5))
+			if ((cur->code ^ iter->code)[5])
 			{
 				float w = (1 - cur->pos.z) / (iter->pos.z - cur->pos.z);
 				Node n;
@@ -518,13 +518,13 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 		//delete node where is back of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(5)) iter = l.erase(iter);
+			if ((iter->code)[5]) iter = l.erase(iter);
 			else ++iter;
 		}
 
 	}
 
-	if (a1.at(0)) // if left
+	if (a1[0]) // if left
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -533,7 +533,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(0))
+			if ((cur->code ^ iter->code)[0])
 			{
 				float w = (-1 - cur->pos.x) / (iter->pos.x - cur->pos.x);
 				Node n;
@@ -554,13 +554,13 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 		//delete node where is left of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(0)) iter = l.erase(iter);
+			if ((iter->code)[0]) iter = l.erase(iter);
 			else ++iter;
 		}
 
 	}
 
-	if (a1.at(1)) // if right
+	if (a1[1]) // if right
 	{
 		if (l.size() == 0) return 0;
 		auto iter = l.begin();
@@ -569,7 +569,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 			auto cur = iter++;
 			if (iter == l.end()) iter = l.begin(); //cycle
 
-			if ((cur->code ^ iter->code).at(1))
+			if ((cur->code ^ iter->code)[1])
 			{
 				float w = (1 - cur->pos.x) / (iter->pos.x - cur->pos.x);
 				Node n;
@@ -589,7 +589,7 @@ int clippingTriangle_Orth(const Vertex* v1, const Vertex* v2, const Vertex* v3, 
 		//delete node where is right of box
 		for (iter = l.begin(); iter != l.end();)
 		{
-			if (iter->code.at(1)) iter = l.erase(iter);
+			if ((iter->code)[1]) iter = l.erase(iter);
 			else ++iter;
 		}
 	}
